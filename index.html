@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cantonese Learning</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f6f6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      max-width: 520px;
+      margin: 20px auto;
+    }
+
+    .label {
+      color: #777;
+      font-size: 14px;
+      margin-top: 16px;
+    }
+
+    .text {
+      font-size: 22px;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    .jyutping {
+      font-size: 18px;
+      color: #444;
+      line-height: 1.4;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 14px;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      background: #222;
+      color: white;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-top: 10px;
+    }
+
+    .counter {
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Cantonese Learning</h1>
+
+  <div class="card">
+    <input id="searchBox" placeholder="Search English / Cantonese" oninput="searchPhrase()" />
+
+    <div class="counter" id="counter"></div>
+
+    <div class="label">English</div>
+    <div class="text" id="english"></div>
+
+    <div class="label">Cantonese</div>
+    <div class="text" id="cantonese"></div>
+
+    <div class="label">Jyutping</div>
+    <div class="jyutping" id="jyutping"></div>
+
+    <div class="label">Example</div>
+    <div class="text" id="example"></div>
+
+    <div class="label">Example Jyutping</div>
+    <div class="jyutping" id="example_jyutping"></div>
+
+    <div class="label">Meaning</div>
+    <div class="text" id="meaning"></div>
+
+    <button onclick="randomCard()">Random Card</button>
+    <button onclick="nextCard()">Next Card</button>
+  </div>
+
+  <script>
+    let phrases = [];
+    let currentIndex = 0;
+
+    async function loadPhrases() {
+      try {
+        const response = await fetch("phrases.json");
+        phrases = await response.json();
+        showCard(0);
+      } catch (error) {
+        document.getElementById("english").textContent = "Failed to load phrases.json";
+        document.getElementById("meaning").textContent = "Please check that index.html and phrases.json are in the same folder.";
+      }
+    }
+
+    function showCard(index) {
+      if (phrases.length === 0) return;
+
+      const item = phrases[index];
+
+      document.getElementById("counter").textContent = `${index + 1} / ${phrases.length}`;
+      document.getElementById("english").textContent = item.english;
+      document.getElementById("cantonese").textContent = item.cantonese;
+      document.getElementById("jyutping").textContent = item.jyutping;
+      document.getElementById("example").textContent = item.example;
+      document.getElementById("example_jyutping").textContent = item.example_jyutping;
+      document.getElementById("meaning").textContent = item.meaning;
+    }
+
+    function nextCard() {
+      currentIndex = (currentIndex + 1) % phrases.length;
+      showCard(currentIndex);
+    }
+
+    function randomCard() {
+      currentIndex = Math.floor(Math.random() * phrases.length);
+      showCard(currentIndex);
+    }
+
+    function searchPhrase() {
+      const keyword = document.getElementById("searchBox").value.toLowerCase();
+
+      if (!keyword) {
+        showCard(currentIndex);
+        return;
+      }
+
+      const foundIndex = phrases.findIndex(item =>
+        item.english.toLowerCase().includes(keyword) ||
+        item.cantonese.includes(keyword) ||
+        item.meaning.toLowerCase().includes(keyword) ||
+        item.example.includes(keyword)
+      );
+
+      if (foundIndex !== -1) {
+        currentIndex = foundIndex;
+        showCard(currentIndex);
+      }
+    }
+
+    loadPhrases();
+  </script>
+</body>
+</html>

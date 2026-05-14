@@ -1,0 +1,42 @@
+[
+  {
+    "english": "Hello",
+    "cantonese": "你好",
+    "jyutping": "nei5 hou2",
+    "example": "你好，我係新嚟嘅。",
+    "example_jyutping": "nei5 hou2, ngo5 hai6 san1 lai4 ge3.",
+    "meaning": "Hello, I am new here."
+  },
+  {
+    "english": "Thank you / Please",
+    "cantonese": "唔該",
+    "jyutping": "m4 goi1",
+    "example": "唔該你幫我睇一睇呢份文件。",
+    "example_jyutping": "m4 goi1 nei5 bong1 ngo5 tai2 jat1 tai2 ni1 fan6 man4 gin2.",
+    "meaning": "Could you please help me take a look at this document?"
+  },
+  {
+    "english": "I don’t understand",
+    "cantonese": "我唔明",
+    "jyutping": "ngo5 m4 ming4",
+    "example": "我唔明呢條合約條款。",
+    "example_jyutping": "ngo5 m4 ming4 ni1 tiu4 hap6 joek3 tiu4 fun2.",
+    "meaning": "I don’t understand this contract clause."
+  },
+  {
+    "english": "Contract",
+    "cantonese": "合約",
+    "jyutping": "hap6 joek3",
+    "example": "我哋需要審閱呢份合約。",
+    "example_jyutping": "ngo5 dei6 seoi1 jiu3 sam2 jyut6 ni1 fan6 hap6 joek3.",
+    "meaning": "We need to review this contract."
+  },
+  {
+    "english": "Document",
+    "cantonese": "文件",
+    "jyutping": "man4 gin2",
+    "example": "呢份文件要上載到系統。",
+    "example_jyutping": "ni1 fan6 man4 gin2 jiu3 soeng5 zoi3 dou3 hai6 tung2.",
+    "meaning": "This document needs to be uploaded to the system."
+  }
+]
