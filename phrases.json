@@ -1,5 +1,6 @@
 [
   {
+    "category": "Daily",
     "english": "Hello",
     "cantonese": "你好",
     "jyutping": "nei5 hou2",
@@ -8,22 +9,304 @@
     "meaning": "Hello, I am new here."
   },
   {
+    "category": "Daily",
     "english": "Thank you / Please",
     "cantonese": "唔該",
     "jyutping": "m4 goi1",
-    "example": "唔該你幫我睇一睇呢份文件。",
-    "example_jyutping": "m4 goi1 nei5 bong1 ngo5 tai2 jat1 tai2 ni1 fan6 man4 gin2.",
-    "meaning": "Could you please help me take a look at this document?"
+    "example": "唔該你幫我睇一睇。",
+    "example_jyutping": "m4 goi1 nei5 bong1 ngo5 tai2 jat1 tai2.",
+    "meaning": "Could you please help me take a look?"
   },
   {
-    "english": "I don’t understand",
+    "category": "Daily",
+    "english": "Thank you very much",
+    "cantonese": "多謝晒",
+    "jyutping": "do1 ze6 saai3",
+    "example": "多謝晒你今日幫我。",
+    "example_jyutping": "do1 ze6 saai3 nei5 gam1 jat6 bong1 ngo5.",
+    "meaning": "Thank you very much for helping me today."
+  },
+  {
+    "category": "Daily",
+    "english": "Sorry / Excuse me",
+    "cantonese": "唔好意思",
+    "jyutping": "m4 hou2 ji3 si1",
+    "example": "唔好意思，我想問一問。",
+    "example_jyutping": "m4 hou2 ji3 si1, ngo5 soeng2 man6 jat1 man6.",
+    "meaning": "Excuse me, I would like to ask something."
+  },
+  {
+    "category": "Daily",
+    "english": "I don't understand",
     "cantonese": "我唔明",
     "jyutping": "ngo5 m4 ming4",
-    "example": "我唔明呢條合約條款。",
-    "example_jyutping": "ngo5 m4 ming4 ni1 tiu4 hap6 joek3 tiu4 fun2.",
-    "meaning": "I don’t understand this contract clause."
+    "example": "我唔明，可唔可以講多次？",
+    "example_jyutping": "ngo5 m4 ming4, ho2 m4 ho2 ji5 gong2 do1 ci3?",
+    "meaning": "I don't understand. Can you say it again?"
   },
   {
+    "category": "Daily",
+    "english": "Can you say it again?",
+    "cantonese": "可唔可以講多次？",
+    "jyutping": "ho2 m4 ho2 ji5 gong2 do1 ci3?",
+    "example": "可唔可以講多次？我啱啱冇聽清楚。",
+    "example_jyutping": "ho2 m4 ho2 ji5 gong2 do1 ci3? ngo5 ngaam1 ngaam1 mou5 teng1 cing1 co2.",
+    "meaning": "Can you say it again? I didn't hear clearly just now."
+  },
+  {
+    "category": "Daily",
+    "english": "Can you speak more slowly?",
+    "cantonese": "可唔可以講慢啲？",
+    "jyutping": "ho2 m4 ho2 ji5 gong2 maan6 di1?",
+    "example": "可唔可以講慢啲？我仲學緊廣東話。",
+    "example_jyutping": "ho2 m4 ho2 ji5 gong2 maan6 di1? ngo5 zung6 hok6 gan2 gwong2 dung1 waa2.",
+    "meaning": "Can you speak more slowly? I am still learning Cantonese."
+  },
+  {
+    "category": "Daily",
+    "english": "I am learning Cantonese",
+    "cantonese": "我學緊廣東話",
+    "jyutping": "ngo5 hok6 gan2 gwong2 dung1 waa2",
+    "example": "我學緊廣東話，講得唔係好好。",
+    "example_jyutping": "ngo5 hok6 gan2 gwong2 dung1 waa2, gong2 dak1 m4 hai6 hou2 hou2.",
+    "meaning": "I am learning Cantonese, and I don't speak it very well."
+  },
+  {
+    "category": "Daily",
+    "english": "No problem",
+    "cantonese": "冇問題",
+    "jyutping": "mou5 man6 tai4",
+    "example": "冇問題，我可以幫你。",
+    "example_jyutping": "mou5 man6 tai4, ngo5 ho2 ji5 bong1 nei5.",
+    "meaning": "No problem, I can help you."
+  },
+  {
+    "category": "Daily",
+    "english": "It's okay",
+    "cantonese": "冇所謂",
+    "jyutping": "mou5 so2 wai6",
+    "example": "冇所謂，我哋聽日再傾。",
+    "example_jyutping": "mou5 so2 wai6, ngo5 dei6 ting1 jat6 zoi3 king1.",
+    "meaning": "It's okay. We can talk again tomorrow."
+  },
+  {
+    "category": "Daily",
+    "english": "See you tomorrow",
+    "cantonese": "聽日見",
+    "jyutping": "ting1 jat6 gin3",
+    "example": "好，聽日見。",
+    "example_jyutping": "hou2, ting1 jat6 gin3.",
+    "meaning": "Okay, see you tomorrow."
+  },
+  {
+    "category": "Daily",
+    "english": "I need help",
+    "cantonese": "我需要幫手",
+    "jyutping": "ngo5 seoi1 jiu3 bong1 sau2",
+    "example": "唔好意思，我需要幫手。",
+    "example_jyutping": "m4 hou2 ji3 si1, ngo5 seoi1 jiu3 bong1 sau2.",
+    "meaning": "Excuse me, I need help."
+  },
+  {
+    "category": "Workplace",
+    "english": "Meeting",
+    "cantonese": "開會",
+    "jyutping": "hoi1 wui2",
+    "example": "我哋三點開會。",
+    "example_jyutping": "ngo5 dei6 saam1 dim2 hoi1 wui2.",
+    "meaning": "We have a meeting at three."
+  },
+  {
+    "category": "Workplace",
+    "english": "Schedule",
+    "cantonese": "日程",
+    "jyutping": "jat6 cing4",
+    "example": "我想睇一睇今日嘅日程。",
+    "example_jyutping": "ngo5 soeng2 tai2 jat1 tai2 gam1 jat6 ge3 jat6 cing4.",
+    "meaning": "I want to take a look at today's schedule."
+  },
+  {
+    "category": "Workplace",
+    "english": "Appointment",
+    "cantonese": "預約",
+    "jyutping": "jyu6 joek3",
+    "example": "我哋要安排一個預約。",
+    "example_jyutping": "ngo5 dei6 jiu3 on1 paai4 jat1 go3 jyu6 joek3.",
+    "meaning": "We need to arrange an appointment."
+  },
+  {
+    "category": "Workplace",
+    "english": "Deadline",
+    "cantonese": "限期",
+    "jyutping": "haan6 kei4",
+    "example": "呢件事嘅限期係星期五。",
+    "example_jyutping": "ni1 gin6 si6 ge3 haan6 kei4 hai6 sing1 kei4 ng5.",
+    "meaning": "The deadline for this matter is Friday."
+  },
+  {
+    "category": "Workplace",
+    "english": "Follow up",
+    "cantonese": "跟進",
+    "jyutping": "gan1 zeon3",
+    "example": "我會跟進呢件事。",
+    "example_jyutping": "ngo5 wui5 gan1 zeon3 ni1 gin6 si6.",
+    "meaning": "I will follow up on this matter."
+  },
+  {
+    "category": "Workplace",
+    "english": "Update",
+    "cantonese": "更新",
+    "jyutping": "gang1 san1",
+    "example": "你可以更新一下資料嗎？",
+    "example_jyutping": "nei5 ho2 ji5 gang1 san1 jat1 haa5 zi1 liu6 maa3?",
+    "meaning": "Can you update the information?"
+  },
+  {
+    "category": "Workplace",
+    "english": "Document",
+    "cantonese": "文件",
+    "jyutping": "man4 gin2",
+    "example": "呢份文件要上載到系統。",
+    "example_jyutping": "ni1 fan6 man4 gin2 jiu3 soeng5 zoi3 dou3 hai6 tung2.",
+    "meaning": "This document needs to be uploaded to the system."
+  },
+  {
+    "category": "Workplace",
+    "english": "Information / Data",
+    "cantonese": "資料",
+    "jyutping": "zi1 liu6",
+    "example": "請你確認呢啲資料啱唔啱。",
+    "example_jyutping": "cing2 nei5 kok3 jing6 ni1 di1 zi1 liu6 ngaam1 m4 ngaam1.",
+    "meaning": "Please confirm whether this information is correct."
+  },
+  {
+    "category": "Workplace",
+    "english": "Email",
+    "cantonese": "電郵",
+    "jyutping": "din6 jau4",
+    "example": "我已經發咗電郵畀你。",
+    "example_jyutping": "ngo5 ji5 ging1 faat3 zo2 din6 jau4 bei2 nei5.",
+    "meaning": "I have already sent you an email."
+  },
+  {
+    "category": "Workplace",
+    "english": "Please reply to the email",
+    "cantonese": "請回覆電郵",
+    "jyutping": "cing2 wui4 fuk1 din6 jau4",
+    "example": "方便嘅話，請回覆電郵。",
+    "example_jyutping": "fong1 bin6 ge3 waa6, cing2 wui4 fuk1 din6 jau4.",
+    "meaning": "Please reply to the email when convenient."
+  },
+  {
+    "category": "Workplace",
+    "english": "Could you send it to me?",
+    "cantonese": "可唔可以send畀我？",
+    "jyutping": "ho2 m4 ho2 ji5 send bei2 ngo5?",
+    "example": "份文件可唔可以send畀我？",
+    "example_jyutping": "fan6 man4 gin2 ho2 m4 ho2 ji5 send bei2 ngo5?",
+    "meaning": "Could you send the document to me?"
+  },
+  {
+    "category": "Workplace",
+    "english": "Let me check",
+    "cantonese": "等我睇一睇",
+    "jyutping": "dang2 ngo5 tai2 jat1 tai2",
+    "example": "等我睇一睇先。",
+    "example_jyutping": "dang2 ngo5 tai2 jat1 tai2 sin1.",
+    "meaning": "Let me take a look first."
+  },
+  {
+    "category": "Workplace",
+    "english": "I will get back to you later",
+    "cantonese": "我遲啲覆你",
+    "jyutping": "ngo5 ci4 di1 fuk1 nei5",
+    "example": "我而家未確定，遲啲覆你。",
+    "example_jyutping": "ngo5 ji4 gaa1 mei6 kok3 ding6, ci4 di1 fuk1 nei5.",
+    "meaning": "I'm not sure right now. I will get back to you later."
+  },
+  {
+    "category": "Workplace",
+    "english": "Let's discuss this later",
+    "cantonese": "我哋遲啲再傾",
+    "jyutping": "ngo5 dei6 ci4 di1 zoi3 king1",
+    "example": "呢個問題我哋遲啲再傾。",
+    "example_jyutping": "ni1 go3 man6 tai4 ngo5 dei6 ci4 di1 zoi3 king1.",
+    "meaning": "Let's discuss this issue later."
+  },
+  {
+    "category": "Workplace",
+    "english": "Can we reschedule?",
+    "cantonese": "可唔可以改期？",
+    "jyutping": "ho2 m4 ho2 ji5 goi2 kei4?",
+    "example": "聽日個會可唔可以改期？",
+    "example_jyutping": "ting1 jat6 go3 wui2 ho2 m4 ho2 ji5 goi2 kei4?",
+    "meaning": "Can we reschedule tomorrow's meeting?"
+  },
+  {
+    "category": "Workplace",
+    "english": "I'm available",
+    "cantonese": "我得閒",
+    "jyutping": "ngo5 dak1 haan4",
+    "example": "我下晝三點得閒。",
+    "example_jyutping": "ngo5 haa6 zau3 saam1 dim2 dak1 haan4.",
+    "meaning": "I am available at 3 p.m."
+  },
+  {
+    "category": "Workplace",
+    "english": "I'm busy",
+    "cantonese": "我冇時間",
+    "jyutping": "ngo5 mou5 si4 gaan3",
+    "example": "我而家冇時間，遲啲再講。",
+    "example_jyutping": "ngo5 ji4 gaa1 mou5 si4 gaan3, ci4 di1 zoi3 gong2.",
+    "meaning": "I don't have time right now. Let's talk later."
+  },
+  {
+    "category": "Legal",
+    "english": "Law",
+    "cantonese": "法律",
+    "jyutping": "faat3 leot6",
+    "example": "我對香港法律好有興趣。",
+    "example_jyutping": "ngo5 deoi3 hoeng1 gong2 faat3 leot6 hou2 jau5 hing3 ceoi3.",
+    "meaning": "I am very interested in Hong Kong law."
+  },
+  {
+    "category": "Legal",
+    "english": "Law firm",
+    "cantonese": "律師行",
+    "jyutping": "leot6 si1 hong4",
+    "example": "佢喺一間律師行工作。",
+    "example_jyutping": "keoi5 hai2 jat1 gaan1 leot6 si1 hong4 gung1 zok3.",
+    "meaning": "She works at a law firm."
+  },
+  {
+    "category": "Legal",
+    "english": "Lawyer",
+    "cantonese": "律師",
+    "jyutping": "leot6 si1",
+    "example": "我想搵一位律師查詢。",
+    "example_jyutping": "ngo5 soeng2 wan2 jat1 wai2 leot6 si1 caa4 seon1.",
+    "meaning": "I would like to consult a lawyer."
+  },
+  {
+    "category": "Legal",
+    "english": "Client",
+    "cantonese": "客戶",
+    "jyutping": "haak3 wu6",
+    "example": "我哋要同客戶開會。",
+    "example_jyutping": "ngo5 dei6 jiu3 tung4 haak3 wu6 hoi1 wui2.",
+    "meaning": "We need to have a meeting with the client."
+  },
+  {
+    "category": "Legal",
+    "english": "Matter / Case",
+    "cantonese": "案件",
+    "jyutping": "ngon3 gin6",
+    "example": "呢個案件嘅資料已經更新咗。",
+    "example_jyutping": "ni1 go3 ngon3 gin6 ge3 zi1 liu6 ji5 ging1 gang1 san1 zo2.",
+    "meaning": "The information for this case has already been updated."
+  },
+  {
+    "category": "Legal",
     "english": "Contract",
     "cantonese": "合約",
     "jyutping": "hap6 joek3",
@@ -32,11 +315,399 @@
     "meaning": "We need to review this contract."
   },
   {
-    "english": "Document",
-    "cantonese": "文件",
-    "jyutping": "man4 gin2",
-    "example": "呢份文件要上載到系統。",
-    "example_jyutping": "ni1 fan6 man4 gin2 jiu3 soeng5 zoi3 dou3 hai6 tung2.",
-    "meaning": "This document needs to be uploaded to the system."
+    "category": "Legal",
+    "english": "Agreement",
+    "cantonese": "協議",
+    "jyutping": "hip3 ji5",
+    "example": "雙方已經簽署協議。",
+    "example_jyutping": "soeng1 fong1 ji5 ging1 cim1 cyu5 hip3 ji5.",
+    "meaning": "Both parties have signed the agreement."
+  },
+  {
+    "category": "Legal",
+    "english": "Clause",
+    "cantonese": "條款",
+    "jyutping": "tiu4 fun2",
+    "example": "呢條條款需要再修改。",
+    "example_jyutping": "ni1 tiu4 tiu4 fun2 seoi1 jiu3 zoi3 sau1 goi2.",
+    "meaning": "This clause needs to be revised again."
+  },
+  {
+    "category": "Legal",
+    "english": "Review a contract",
+    "cantonese": "審閱合約",
+    "jyutping": "sam2 jyut6 hap6 joek3",
+    "example": "我今日要審閱合約。",
+    "example_jyutping": "ngo5 gam1 jat6 jiu3 sam2 jyut6 hap6 joek3.",
+    "meaning": "I need to review a contract today."
+  },
+  {
+    "category": "Legal",
+    "english": "Sign a contract",
+    "cantonese": "簽合約",
+    "jyutping": "cim1 hap6 joek3",
+    "example": "客戶聽日會簽合約。",
+    "example_jyutping": "haak3 wu6 ting1 jat6 wui5 cim1 hap6 joek3.",
+    "meaning": "The client will sign the contract tomorrow."
+  },
+  {
+    "category": "Legal",
+    "english": "Due diligence",
+    "cantonese": "盡職審查",
+    "jyutping": "zeon6 zik1 sam2 caa4",
+    "example": "我哋要做盡職審查。",
+    "example_jyutping": "ngo5 dei6 jiu3 zou6 zeon6 zik1 sam2 caa4.",
+    "meaning": "We need to do due diligence."
+  },
+  {
+    "category": "Legal",
+    "english": "Compliance",
+    "cantonese": "合規",
+    "jyutping": "hap6 kwai1",
+    "example": "呢個流程要符合合規要求。",
+    "example_jyutping": "ni1 go3 lau4 cing4 jiu3 fu4 hap6 hap6 kwai1 jiu1 kau4.",
+    "meaning": "This process must meet compliance requirements."
+  },
+  {
+    "category": "Legal",
+    "english": "Legal advice",
+    "cantonese": "法律意見",
+    "jyutping": "faat3 leot6 ji3 gin3",
+    "example": "呢個問題需要法律意見。",
+    "example_jyutping": "ni1 go3 man6 tai4 seoi1 jiu3 faat3 leot6 ji3 gin3.",
+    "meaning": "This issue requires legal advice."
+  },
+  {
+    "category": "Legal",
+    "english": "Dispute",
+    "cantonese": "爭議",
+    "jyutping": "zang1 ji5",
+    "example": "雙方之間有一個商業爭議。",
+    "example_jyutping": "soeng1 fong1 zi1 gaan1 jau5 jat1 go3 soeng1 jip6 zang1 ji5.",
+    "meaning": "There is a commercial dispute between the two parties."
+  },
+  {
+    "category": "Legal",
+    "english": "Litigation",
+    "cantonese": "訴訟",
+    "jyutping": "sou3 zung6",
+    "example": "呢個案件可能會進入訴訟程序。",
+    "example_jyutping": "ni1 go3 ngon3 gin6 ho2 nang4 wui5 zeon3 jap6 sou3 zung6 cing4 zeoi6.",
+    "meaning": "This case may enter litigation proceedings."
+  },
+  {
+    "category": "Legal",
+    "english": "Arbitration",
+    "cantonese": "仲裁",
+    "jyutping": "zung6 coi4",
+    "example": "合約入面有仲裁條款。",
+    "example_jyutping": "hap6 joek3 jap6 min6 jau5 zung6 coi4 tiu4 fun2.",
+    "meaning": "There is an arbitration clause in the contract."
+  },
+  {
+    "category": "Legal",
+    "english": "Court",
+    "cantonese": "法院",
+    "jyutping": "faat3 jyun6",
+    "example": "案件已經交到法院。",
+    "example_jyutping": "ngon3 gin6 ji5 ging1 gaau1 dou3 faat3 jyun6.",
+    "meaning": "The case has already been submitted to the court."
+  },
+  {
+    "category": "Legal",
+    "english": "Evidence",
+    "cantonese": "證據",
+    "jyutping": "zing3 geoi3",
+    "example": "我哋需要更多證據。",
+    "example_jyutping": "ngo5 dei6 seoi1 jiu3 gang3 do1 zing3 geoi3.",
+    "meaning": "We need more evidence."
+  },
+  {
+    "category": "Legal",
+    "english": "Confidential",
+    "cantonese": "保密",
+    "jyutping": "bou2 mat6",
+    "example": "呢份文件係保密嘅。",
+    "example_jyutping": "ni1 fan6 man4 gin2 hai6 bou2 mat6 ge3.",
+    "meaning": "This document is confidential."
+  },
+  {
+    "category": "Legal",
+    "english": "Personal data",
+    "cantonese": "個人資料",
+    "jyutping": "go3 jan4 zi1 liu6",
+    "example": "系統入面有好多個人資料。",
+    "example_jyutping": "hai6 tung2 jap6 min6 jau5 hou2 do1 go3 jan4 zi1 liu6.",
+    "meaning": "There is a lot of personal data in the system."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Legal technology",
+    "cantonese": "法律科技",
+    "jyutping": "faat3 leot6 fo1 gei6",
+    "example": "我對法律科技好有興趣。",
+    "example_jyutping": "ngo5 deoi3 faat3 leot6 fo1 gei6 hou2 jau5 hing3 ceoi3.",
+    "meaning": "I am very interested in legal technology."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "System",
+    "cantonese": "系統",
+    "jyutping": "hai6 tung2",
+    "example": "呢個系統可以自動整理案件資料。",
+    "example_jyutping": "ni1 go3 hai6 tung2 ho2 ji5 zi6 dung6 zing2 lei5 ngon3 gin6 zi1 liu6.",
+    "meaning": "This system can automatically organize case information."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Platform",
+    "cantonese": "平台",
+    "jyutping": "ping4 toi4",
+    "example": "我哋用呢個平台管理文件。",
+    "example_jyutping": "ngo5 dei6 jung6 ni1 go3 ping4 toi4 gun2 lei5 man4 gin2.",
+    "meaning": "We use this platform to manage documents."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Upload",
+    "cantonese": "上載",
+    "jyutping": "soeng5 zoi3",
+    "example": "請你上載呢份文件。",
+    "example_jyutping": "cing2 nei5 soeng5 zoi3 ni1 fan6 man4 gin2.",
+    "meaning": "Please upload this document."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Download",
+    "cantonese": "下載",
+    "jyutping": "haa6 zoi3",
+    "example": "你可以下載最新版本。",
+    "example_jyutping": "nei5 ho2 ji5 haa6 zoi3 zeoi3 san1 baan2 bun2.",
+    "meaning": "You can download the latest version."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Search",
+    "cantonese": "搜尋",
+    "jyutping": "sau2 cam4",
+    "example": "你可以用關鍵字搜尋文件。",
+    "example_jyutping": "nei5 ho2 ji5 jung6 gwaan1 gin6 zi6 sau2 cam4 man4 gin2.",
+    "meaning": "You can search documents using keywords."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Keyword",
+    "cantonese": "關鍵字",
+    "jyutping": "gwaan1 gin6 zi6",
+    "example": "請輸入關鍵字。",
+    "example_jyutping": "cing2 syu1 jap6 gwaan1 gin6 zi6.",
+    "meaning": "Please enter a keyword."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Database",
+    "cantonese": "資料庫",
+    "jyutping": "zi1 liu6 fu3",
+    "example": "所有案件資料都儲存喺資料庫。",
+    "example_jyutping": "so2 jau5 ngon3 gin6 zi1 liu6 dou1 cyu5 cyun4 hai2 zi1 liu6 fu3.",
+    "meaning": "All case information is stored in the database."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Automation",
+    "cantonese": "自動化",
+    "jyutping": "zi6 dung6 faa3",
+    "example": "我哋想將文件審閱流程自動化。",
+    "example_jyutping": "ngo5 dei6 soeng2 zoeng1 man4 gin2 sam2 jyut6 lau4 cing4 zi6 dung6 faa3.",
+    "meaning": "We want to automate the document review process."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Artificial intelligence",
+    "cantonese": "人工智能",
+    "jyutping": "jan4 gung1 zi3 nang4",
+    "example": "人工智能可以幫手分析文件。",
+    "example_jyutping": "jan4 gung1 zi3 nang4 ho2 ji5 bong1 sau2 fan1 sik1 man4 gin2.",
+    "meaning": "Artificial intelligence can help analyze documents."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Document review",
+    "cantonese": "文件審閱",
+    "jyutping": "man4 gin2 sam2 jyut6",
+    "example": "呢個工具可以加快文件審閱。",
+    "example_jyutping": "ni1 go3 gung1 geoi6 ho2 ji5 gaa1 faai3 man4 gin2 sam2 jyut6.",
+    "meaning": "This tool can speed up document review."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Case management",
+    "cantonese": "案件管理",
+    "jyutping": "ngon3 gin6 gun2 lei5",
+    "example": "呢個平台主要用嚟做案件管理。",
+    "example_jyutping": "ni1 go3 ping4 toi4 zyu2 jiu3 jung6 lai4 zou6 ngon3 gin6 gun2 lei5.",
+    "meaning": "This platform is mainly used for case management."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Calendar management",
+    "cantonese": "日程管理",
+    "jyutping": "jat6 cing4 gun2 lei5",
+    "example": "律師行需要更好嘅日程管理。",
+    "example_jyutping": "leot6 si1 hong4 seoi1 jiu3 gang3 hou2 ge3 jat6 cing4 gun2 lei5.",
+    "meaning": "Law firms need better calendar management."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Workflow",
+    "cantonese": "工作流程",
+    "jyutping": "gung1 zok3 lau4 cing4",
+    "example": "我哋想改善工作流程。",
+    "example_jyutping": "ngo5 dei6 soeng2 goi2 sin6 gung1 zok3 lau4 cing4.",
+    "meaning": "We want to improve the workflow."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "User interface",
+    "cantonese": "用戶介面",
+    "jyutping": "jung6 wu6 gaai3 min6",
+    "example": "呢個用戶介面好容易用。",
+    "example_jyutping": "ni1 go3 jung6 wu6 gaai3 min6 hou2 jung4 ji6 jung6.",
+    "meaning": "This user interface is easy to use."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Access permission",
+    "cantonese": "存取權限",
+    "jyutping": "cyun4 ceoi2 kyun4 haan6",
+    "example": "你有冇存取權限？",
+    "example_jyutping": "nei5 jau5 mou5 cyun4 ceoi2 kyun4 haan6?",
+    "meaning": "Do you have access permission?"
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Login",
+    "cantonese": "登入",
+    "jyutping": "dang1 jap6",
+    "example": "我登入唔到系統。",
+    "example_jyutping": "ngo5 dang1 jap6 m4 dou2 hai6 tung2.",
+    "meaning": "I can't log into the system."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Password",
+    "cantonese": "密碼",
+    "jyutping": "mat6 maa5",
+    "example": "我唔記得密碼。",
+    "example_jyutping": "ngo5 m4 gei3 dak1 mat6 maa5.",
+    "meaning": "I forgot my password."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Bug",
+    "cantonese": "漏洞",
+    "jyutping": "lau6 dung6",
+    "example": "呢個系統可能有漏洞。",
+    "example_jyutping": "ni1 go3 hai6 tung2 ho2 nang4 jau5 lau6 dung6.",
+    "meaning": "This system may have a bug or vulnerability."
+  },
+  {
+    "category": "Legal Tech",
+    "english": "Version",
+    "cantonese": "版本",
+    "jyutping": "baan2 bun2",
+    "example": "請使用最新版本。",
+    "example_jyutping": "cing2 si2 jung6 zeoi3 san1 baan2 bun2.",
+    "meaning": "Please use the latest version."
+  },
+  {
+    "category": "Hong Kong Life",
+    "english": "MTR",
+    "cantonese": "港鐵",
+    "jyutping": "gong2 tit3",
+    "example": "我搭港鐵返工。",
+    "example_jyutping": "ngo5 daap3 gong2 tit3 faan1 gung1.",
+    "meaning": "I take the MTR to work."
+  },
+  {
+    "category": "Hong Kong Life",
+    "english": "Take the bus",
+    "cantonese": "搭巴士",
+    "jyutping": "daap3 baa1 si2",
+    "example": "我今日搭巴士去中環。",
+    "example_jyutping": "ngo5 gam1 jat6 daap3 baa1 si2 heoi3 zung1 waan4.",
+    "meaning": "I am taking the bus to Central today."
+  },
+  {
+    "category": "Hong Kong Life",
+    "english": "Central",
+    "cantonese": "中環",
+    "jyutping": "zung1 waan4",
+    "example": "我喺中環返工。",
+    "example_jyutping": "ngo5 hai2 zung1 waan4 faan1 gung1.",
+    "meaning": "I work in Central."
+  },
+  {
+    "category": "Hong Kong Life",
+    "english": "Causeway Bay",
+    "cantonese": "銅鑼灣",
+    "jyutping": "tung4 lo4 waan1",
+    "example": "我哋今晚去銅鑼灣食飯。",
+    "example_jyutping": "ngo5 dei6 gam1 maan5 heoi3 tung4 lo4 waan1 sik6 faan6.",
+    "meaning": "We are going to Causeway Bay for dinner tonight."
+  },
+  {
+    "category": "Hong Kong Life",
+    "english": "Eat",
+    "cantonese": "食飯",
+    "jyutping": "sik6 faan6",
+    "example": "你食咗飯未？",
+    "example_jyutping": "nei5 sik6 zo2 faan6 mei6?",
+    "meaning": "Have you eaten yet?"
+  },
+  {
+    "category": "Hong Kong Life",
+    "english": "Pay the bill",
+    "cantonese": "埋單",
+    "jyutping": "maai4 daan1",
+    "example": "唔該，埋單。",
+    "example_jyutping": "m4 goi1, maai4 daan1.",
+    "meaning": "Excuse me, bill please."
+  },
+  {
+    "category": "Hong Kong Life",
+    "english": "Where is this place?",
+    "cantonese": "呢度喺邊？",
+    "jyutping": "ni1 dou6 hai2 bin1?",
+    "example": "唔好意思，呢度喺邊？",
+    "example_jyutping": "m4 hou2 ji3 si1, ni1 dou6 hai2 bin1?",
+    "meaning": "Excuse me, where is this place?"
+  },
+  {
+    "category": "Hong Kong Life",
+    "english": "How much is it?",
+    "cantonese": "幾多錢？",
+    "jyutping": "gei2 do1 cin2?",
+    "example": "呢個幾多錢？",
+    "example_jyutping": "ni1 go3 gei2 do1 cin2?",
+    "meaning": "How much is this?"
+  },
+  {
+    "category": "Hong Kong Life",
+    "english": "I want this one",
+    "cantonese": "我要呢個",
+    "jyutping": "ngo5 jiu3 ni1 go3",
+    "example": "唔該，我要呢個。",
+    "example_jyutping": "m4 goi1, ngo5 jiu3 ni1 go3.",
+    "meaning": "Please, I want this one."
+  },
+  {
+    "category": "Hong Kong Life",
+    "english": "Where is the restroom?",
+    "cantonese": "洗手間喺邊？",
+    "jyutping": "sai2 sau2 gaan1 hai2 bin1?",
+    "example": "唔好意思，洗手間喺邊？",
+    "example_jyutping": "m4 hou2 ji3 si1, sai2 sau2 gaan1 hai2 bin1?",
+    "meaning": "Excuse me, where is the restroom?"
   }
 ]

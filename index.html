@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Cantonese Learning</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -54,9 +56,18 @@
       font-size: 18px;
       background: #222;
       color: white;
+      cursor: pointer;
     }
 
-    input {
+    button.secondary {
+      background: #555;
+    }
+
+    button.speak {
+      background: #0066cc;
+    }
+
+    input, select {
       width: 100%;
       padding: 12px;
       font-size: 18px;
@@ -64,6 +75,7 @@
       border: 1px solid #ccc;
       box-sizing: border-box;
       margin-top: 10px;
+      background: white;
     }
 
     .counter {
@@ -72,6 +84,24 @@
       font-size: 14px;
       margin-top: 10px;
     }
+
+    .category-badge {
+      display: inline-block;
+      background: #eeeeee;
+      color: #333;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 16px;
+      margin-top: 4px;
+    }
+
+    .hint {
+      text-align: center;
+      color: #777;
+      font-size: 13px;
+      margin-top: 12px;
+      line-height: 1.4;
+    }
   </style>
 </head>
 
@@ -79,9 +109,20 @@
   <h1>Cantonese Learning</h1>
 
   <div class="card">
-    <input id="searchBox" placeholder="Search English / Cantonese" oninput="searchPhrase()" />
+    <input
+      id="searchBox"
+      placeholder="Search English / Cantonese / Meaning"
+      oninput="searchPhrase()"
+    />
+
+    <select id="categoryFilter" onchange="filterByCategory()">
+      <option value="All">All Categories</option>
+    </select>
 
     <div class="counter" id="counter"></div>
+
+    <div class="label">Category</div>
+    <div class="category-badge" id="category"></div>
 
     <div class="label">English</div>
     <div class="text" id="english"></div>
@@ -101,68 +142,178 @@
     <div class="label">Meaning</div>
     <div class="text" id="meaning"></div>
 
+    <button class="speak" onclick="speakCantonese()">🔊 Read Cantonese</button>
+    <button class="speak" onclick="speakExample()">🔊 Read Example</button>
+
     <button onclick="randomCard()">Random Card</button>
-    <button onclick="nextCard()">Next Card</button>
+    <button class="secondary" onclick="nextCard()">Next Card</button>
+
+    <div class="hint">
+      Voice uses browser speech synthesis: zh-HK.  
+      If it sounds like Mandarin, the device may not have a Cantonese voice installed.
+    </div>
   </div>
 
   <script>
     let phrases = [];
+    let filteredPhrases = [];
     let currentIndex = 0;
 
     async function loadPhrases() {
       try {
         const response = await fetch("phrases.json");
         phrases = await response.json();
+        filteredPhrases = phrases;
+
+        loadCategories();
         showCard(0);
       } catch (error) {
         document.getElementById("english").textContent = "Failed to load phrases.json";
-        document.getElementById("meaning").textContent = "Please check that index.html and phrases.json are in the same folder.";
+        document.getElementById("meaning").textContent =
+          "Please check that index.html and phrases.json are in the same folder.";
       }
     }
 
+    function loadCategories() {
+      const categoryFilter = document.getElementById("categoryFilter");
+
+      // Avoid duplicated category options
+      categoryFilter.innerHTML = '<option value="All">All Categories</option>';
+
+      const categories = [
+        ...new Set(
+          phrases.map(item => item.category || "Uncategorized")
+        )
+      ];
+
+      categories.forEach(category => {
+        const option = document.createElement("option");
+        option.value = category;
+        option.textContent = category;
+        categoryFilter.appendChild(option);
+      });
+    }
+
     function showCard(index) {
-      if (phrases.length === 0) return;
+      if (filteredPhrases.length === 0) {
+        document.getElementById("counter").textContent = "0 / 0";
+        document.getElementById("category").textContent = "";
+        document.getElementById("english").textContent = "No result found";
+        document.getElementById("cantonese").textContent = "";
+        document.getElementById("jyutping").textContent = "";
+        document.getElementById("example").textContent = "";
+        document.getElementById("example_jyutping").textContent = "";
+        document.getElementById("meaning").textContent = "";
+        return;
+      }
 
-      const item = phrases[index];
+      const item = filteredPhrases[index];
 
-      document.getElementById("counter").textContent = `${index + 1} / ${phrases.length}`;
-      document.getElementById("english").textContent = item.english;
-      document.getElementById("cantonese").textContent = item.cantonese;
-      document.getElementById("jyutping").textContent = item.jyutping;
-      document.getElementById("example").textContent = item.example;
-      document.getElementById("example_jyutping").textContent = item.example_jyutping;
-      document.getElementById("meaning").textContent = item.meaning;
+      document.getElementById("counter").textContent =
+        `${index + 1} / ${filteredPhrases.length}`;
+
+      document.getElementById("category").textContent =
+        item.category || "Uncategorized";
+
+      document.getElementById("english").textContent =
+        item.english || "";
+
+      document.getElementById("cantonese").textContent =
+        item.cantonese || "";
+
+      document.getElementById("jyutping").textContent =
+        item.jyutping || "";
+
+      document.getElementById("example").textContent =
+        item.example || "";
+
+      document.getElementById("example_jyutping").textContent =
+        item.example_jyutping || "";
+
+      document.getElementById("meaning").textContent =
+        item.meaning || "";
     }
 
     function nextCard() {
-      currentIndex = (currentIndex + 1) % phrases.length;
+      if (filteredPhrases.length === 0) return;
+
+      currentIndex = (currentIndex + 1) % filteredPhrases.length;
       showCard(currentIndex);
     }
 
     function randomCard() {
-      currentIndex = Math.floor(Math.random() * phrases.length);
+      if (filteredPhrases.length === 0) return;
+
+      currentIndex = Math.floor(Math.random() * filteredPhrases.length);
+      showCard(currentIndex);
+    }
+
+    function filterByCategory() {
+      const selectedCategory = document.getElementById("categoryFilter").value;
+      const keyword = document.getElementById("searchBox").value.toLowerCase();
+
+      filteredPhrases = phrases.filter(item => {
+        const category = item.category || "Uncategorized";
+
+        const categoryMatch =
+          selectedCategory === "All" ||
+          category === selectedCategory;
+
+        const keywordMatch =
+          keyword === "" ||
+          (item.english || "").toLowerCase().includes(keyword) ||
+          (item.cantonese || "").includes(keyword) ||
+          (item.meaning || "").toLowerCase().includes(keyword) ||
+          (item.example || "").includes(keyword) ||
+          category.toLowerCase().includes(keyword);
+
+        return categoryMatch && keywordMatch;
+      });
+
+      currentIndex = 0;
       showCard(currentIndex);
     }
 
     function searchPhrase() {
-      const keyword = document.getElementById("searchBox").value.toLowerCase();
+      filterByCategory();
+    }
 
-      if (!keyword) {
-        showCard(currentIndex);
+    function speakText(text) {
+      if (!text) return;
+
+      if (!("speechSynthesis" in window)) {
+        alert("Your browser does not support speech synthesis.");
         return;
       }
 
-      const foundIndex = phrases.findIndex(item =>
-        item.english.toLowerCase().includes(keyword) ||
-        item.cantonese.includes(keyword) ||
-        item.meaning.toLowerCase().includes(keyword) ||
-        item.example.includes(keyword)
-      );
+      const utterance = new SpeechSynthesisUtterance(text);
 
-      if (foundIndex !== -1) {
-        currentIndex = foundIndex;
-        showCard(currentIndex);
-      }
+      // Cantonese / Hong Kong
+      utterance.lang = "zh-HK";
+
+      // Slower speed for learning
+      utterance.rate = 0.8;
+
+      // Default pitch
+      utterance.pitch = 1;
+
+      // Stop previous voice before reading new one
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function speakCantonese() {
+      if (filteredPhrases.length === 0) return;
+
+      const item = filteredPhrases[currentIndex];
+      speakText(item.cantonese);
+    }
+
+    function speakExample() {
+      if (filteredPhrases.length === 0) return;
+
+      const item = filteredPhrases[currentIndex];
+      speakText(item.example);
     }
 
     loadPhrases();
