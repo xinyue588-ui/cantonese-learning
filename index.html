@@ -25,7 +25,7 @@
       border-radius: 18px;
       padding: 22px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      max-width: 520px;
+      max-width: 560px;
       margin: 20px auto;
     }
 
@@ -33,6 +33,27 @@
       color: #777;
       font-size: 14px;
       margin-top: 16px;
+    }
+
+    .inline-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #777;
+      font-size: 14px;
+      margin-top: 16px;
+    }
+
+    .icon-button {
+      width: auto;
+      padding: 1px 7px;
+      margin-top: 0;
+      border: none;
+      border-radius: 999px;
+      font-size: 14px;
+      background: #eeeeee;
+      color: #333;
+      cursor: pointer;
     }
 
     .text {
@@ -50,7 +71,7 @@
     button {
       width: 100%;
       padding: 14px;
-      margin-top: 14px;
+      margin-top: 12px;
       border: none;
       border-radius: 12px;
       font-size: 18px;
@@ -63,8 +84,16 @@
       background: #555;
     }
 
-    button.speak {
-      background: #0066cc;
+    button.good {
+      background: #1f8f4d;
+    }
+
+    button.warning {
+      background: #d98200;
+    }
+
+    button.danger {
+      background: #b73333;
     }
 
     input, select {
@@ -95,6 +124,27 @@
       margin-top: 4px;
     }
 
+    .stats-box {
+      background: #f2f2f2;
+      border-radius: 14px;
+      padding: 12px;
+      margin-top: 14px;
+      font-size: 15px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .row button {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
     .hint {
       text-align: center;
       color: #777;
@@ -112,11 +162,19 @@
     <input
       id="searchBox"
       placeholder="Search English / Cantonese / Meaning"
-      oninput="searchPhrase()"
+      oninput="applyFilters()"
     />
 
-    <select id="categoryFilter" onchange="filterByCategory()">
+    <select id="categoryFilter" onchange="applyFilters()">
       <option value="All">All Categories</option>
+    </select>
+
+    <select id="familiarityFilter" onchange="applyFilters()">
+      <option value="All">All Familiarity Levels</option>
+      <option value="New">New</option>
+      <option value="Learning">Learning</option>
+      <option value="Familiar">Familiar</option>
+      <option value="Mastered">Mastered</option>
     </select>
 
     <div class="counter" id="counter"></div>
@@ -127,13 +185,19 @@
     <div class="label">English</div>
     <div class="text" id="english"></div>
 
-    <div class="label">Cantonese</div>
+    <div class="inline-label">
+      <span>Cantonese</span>
+      <button class="icon-button" onclick="speakCantonese()">🔊</button>
+    </div>
     <div class="text" id="cantonese"></div>
 
     <div class="label">Jyutping</div>
     <div class="jyutping" id="jyutping"></div>
 
-    <div class="label">Example</div>
+    <div class="inline-label">
+      <span>Example</span>
+      <button class="icon-button" onclick="speakExample()">🔊</button>
+    </div>
     <div class="text" id="example"></div>
 
     <div class="label">Example Jyutping</div>
@@ -142,15 +206,28 @@
     <div class="label">Meaning</div>
     <div class="text" id="meaning"></div>
 
-    <button class="speak" onclick="speakCantonese()">🔊 Read Cantonese</button>
-    <button class="speak" onclick="speakExample()">🔊 Read Example</button>
+    <div class="stats-box">
+      <div><strong>Views:</strong> <span id="views">0</span></div>
+      <div><strong>Familiarity:</strong> <span id="familiarity">New</span></div>
+      <div><strong>Last reviewed:</strong> <span id="lastReviewed">Never</span></div>
+    </div>
 
     <button onclick="randomCard()">Random Card</button>
     <button class="secondary" onclick="nextCard()">Next Card</button>
+    <button class="warning" onclick="reviewWeakCard()">Review Weak Card</button>
+
+    <div class="row">
+      <button class="danger" onclick="setFamiliarity('Learning')">Still Learning</button>
+      <button class="good" onclick="setFamiliarity('Familiar')">Familiar</button>
+    </div>
+
+    <div class="row">
+      <button class="good" onclick="setFamiliarity('Mastered')">Mastered</button>
+      <button class="secondary" onclick="resetCurrentStats()">Reset This Card</button>
+    </div>
 
     <div class="hint">
-      Voice uses browser speech synthesis: zh-HK.  
-      If it sounds like Mandarin, the device may not have a Cantonese voice installed.
+      Progress is saved locally in this browser. Voice uses browser speech synthesis: zh-HK.
     </div>
   </div>
 
@@ -159,14 +236,22 @@
     let filteredPhrases = [];
     let currentIndex = 0;
 
+    const STORAGE_KEY = "cantoneseLearningStats_v1";
+
     async function loadPhrases() {
       try {
         const response = await fetch("phrases.json");
         phrases = await response.json();
+
+        phrases = phrases.map((item, index) => ({
+          ...item,
+          id: item.id || makePhraseId(item, index)
+        }));
+
         filteredPhrases = phrases;
 
         loadCategories();
-        showCard(0);
+        showCard(0, true);
       } catch (error) {
         document.getElementById("english").textContent = "Failed to load phrases.json";
         document.getElementById("meaning").textContent =
@@ -174,10 +259,17 @@
       }
     }
 
+    function makePhraseId(item, index) {
+      const base = `${item.category || "uncategorized"}-${item.english || index}`;
+      return base
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
+    }
+
     function loadCategories() {
       const categoryFilter = document.getElementById("categoryFilter");
 
-      // Avoid duplicated category options
       categoryFilter.innerHTML = '<option value="All">All Categories</option>';
 
       const categories = [
@@ -194,7 +286,51 @@
       });
     }
 
-    function showCard(index) {
+    function getAllStats() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return {};
+
+      try {
+        return JSON.parse(raw);
+      } catch {
+        return {};
+      }
+    }
+
+    function saveAllStats(stats) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
+    }
+
+    function getPhraseStats(id) {
+      const allStats = getAllStats();
+
+      return allStats[id] || {
+        views: 0,
+        familiarity: "New",
+        lastReviewed: null
+      };
+    }
+
+    function savePhraseStats(id, stats) {
+      const allStats = getAllStats();
+      allStats[id] = stats;
+      saveAllStats(allStats);
+    }
+
+    function recordView(item) {
+      const stats = getPhraseStats(item.id);
+
+      stats.views += 1;
+      stats.lastReviewed = new Date().toLocaleString();
+
+      if (stats.familiarity === "New" && stats.views >= 2) {
+        stats.familiarity = "Learning";
+      }
+
+      savePhraseStats(item.id, stats);
+    }
+
+    function showCard(index, shouldRecordView = true) {
       if (filteredPhrases.length === 0) {
         document.getElementById("counter").textContent = "0 / 0";
         document.getElementById("category").textContent = "";
@@ -204,10 +340,19 @@
         document.getElementById("example").textContent = "";
         document.getElementById("example_jyutping").textContent = "";
         document.getElementById("meaning").textContent = "";
+        document.getElementById("views").textContent = "0";
+        document.getElementById("familiarity").textContent = "New";
+        document.getElementById("lastReviewed").textContent = "Never";
         return;
       }
 
       const item = filteredPhrases[index];
+
+      if (shouldRecordView) {
+        recordView(item);
+      }
+
+      const stats = getPhraseStats(item.id);
 
       document.getElementById("counter").textContent =
         `${index + 1} / ${filteredPhrases.length}`;
@@ -232,32 +377,33 @@
 
       document.getElementById("meaning").textContent =
         item.meaning || "";
+
+      document.getElementById("views").textContent =
+        stats.views;
+
+      document.getElementById("familiarity").textContent =
+        stats.familiarity;
+
+      document.getElementById("lastReviewed").textContent =
+        stats.lastReviewed || "Never";
     }
 
-    function nextCard() {
-      if (filteredPhrases.length === 0) return;
-
-      currentIndex = (currentIndex + 1) % filteredPhrases.length;
-      showCard(currentIndex);
-    }
-
-    function randomCard() {
-      if (filteredPhrases.length === 0) return;
-
-      currentIndex = Math.floor(Math.random() * filteredPhrases.length);
-      showCard(currentIndex);
-    }
-
-    function filterByCategory() {
+    function applyFilters() {
       const selectedCategory = document.getElementById("categoryFilter").value;
+      const selectedFamiliarity = document.getElementById("familiarityFilter").value;
       const keyword = document.getElementById("searchBox").value.toLowerCase();
 
       filteredPhrases = phrases.filter(item => {
         const category = item.category || "Uncategorized";
+        const stats = getPhraseStats(item.id);
 
         const categoryMatch =
           selectedCategory === "All" ||
           category === selectedCategory;
+
+        const familiarityMatch =
+          selectedFamiliarity === "All" ||
+          stats.familiarity === selectedFamiliarity;
 
         const keywordMatch =
           keyword === "" ||
@@ -267,15 +413,68 @@
           (item.example || "").includes(keyword) ||
           category.toLowerCase().includes(keyword);
 
-        return categoryMatch && keywordMatch;
+        return categoryMatch && familiarityMatch && keywordMatch;
       });
 
       currentIndex = 0;
-      showCard(currentIndex);
+      showCard(currentIndex, false);
     }
 
-    function searchPhrase() {
-      filterByCategory();
+    function nextCard() {
+      if (filteredPhrases.length === 0) return;
+
+      currentIndex = (currentIndex + 1) % filteredPhrases.length;
+      showCard(currentIndex, true);
+    }
+
+    function randomCard() {
+      if (filteredPhrases.length === 0) return;
+
+      currentIndex = Math.floor(Math.random() * filteredPhrases.length);
+      showCard(currentIndex, true);
+    }
+
+    function reviewWeakCard() {
+      const weakCards = phrases.filter(item => {
+        const stats = getPhraseStats(item.id);
+        return stats.familiarity === "New" || stats.familiarity === "Learning";
+      });
+
+      if (weakCards.length === 0) {
+        alert("No weak cards found. Great job!");
+        return;
+      }
+
+      filteredPhrases = weakCards;
+      currentIndex = Math.floor(Math.random() * filteredPhrases.length);
+      showCard(currentIndex, true);
+    }
+
+    function setFamiliarity(level) {
+      if (filteredPhrases.length === 0) return;
+
+      const item = filteredPhrases[currentIndex];
+      const stats = getPhraseStats(item.id);
+
+      stats.familiarity = level;
+      stats.lastReviewed = new Date().toLocaleString();
+
+      savePhraseStats(item.id, stats);
+      showCard(currentIndex, false);
+    }
+
+    function resetCurrentStats() {
+      if (filteredPhrases.length === 0) return;
+
+      const item = filteredPhrases[currentIndex];
+
+      savePhraseStats(item.id, {
+        views: 0,
+        familiarity: "New",
+        lastReviewed: null
+      });
+
+      showCard(currentIndex, false);
     }
 
     function speakText(text) {
@@ -288,16 +487,10 @@
 
       const utterance = new SpeechSynthesisUtterance(text);
 
-      // Cantonese / Hong Kong
       utterance.lang = "zh-HK";
-
-      // Slower speed for learning
       utterance.rate = 0.8;
-
-      // Default pitch
       utterance.pitch = 1;
 
-      // Stop previous voice before reading new one
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(utterance);
     }
